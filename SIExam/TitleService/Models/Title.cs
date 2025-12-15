@@ -1,6 +1,6 @@
-namespace TaskService.Models;
+namespace TitleService.Models;
 
-public class Task
+public class Titles
 {
     public int Id { get; set; }
     public required string Title { get; set; }

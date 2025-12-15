@@ -1,5 +1,5 @@
 using Polly;
-
+using TitleService.Models;
 
 
 var builder = WebApplication.CreateBuilder(args);
