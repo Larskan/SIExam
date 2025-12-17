@@ -1,6 +1,6 @@
-namespace TaskService.Models;
+namespace TaskService.DTOs;
 
-public class Task
+public class TaskDto
 {
     public int Id { get; set; }
     public int StatusId { get; set; }
@@ -12,5 +12,4 @@ public class Task
     public int IntelligenceGain { get; set; }
     public int MentalityGain { get; set; }
     public int DexterityGain { get; set; }
-
 }

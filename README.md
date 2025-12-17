@@ -8,6 +8,7 @@ Projektet indeholder:
 * Brug af Swagger til HTTP for simpel API Dokumentation for Skill, Task og Title.
 * Resiliens Patterns: Timeout, Retry, Circuit Breaker.
 * Containeriseing med Docker vha. docker-compose som bruger dockers interne netværk(siexam_default) til at tillade mikroservices at kommunikere.
+* Brug af Data Transfer Objects(DTOs).
 
 Projektet er skrevet i C# med EntityFramework.
 

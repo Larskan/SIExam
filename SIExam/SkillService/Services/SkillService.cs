@@ -56,7 +56,7 @@ public class SkillService : ISkillService
             Mastery = dto.Mastery
         };
 
-        var updatedSkill = await _skillRepository.UpdateMasteryAsync(id, skill);
+        var updatedSkill = await _skillRepository.UpdateSkillWithMasteryAsync(id, skill);
         return updatedSkill?.ToDto();
     }
 
@@ -70,7 +70,7 @@ public class SkillService : ISkillService
             Level = dto.Level
         };
 
-        var updatedSkill = await _skillRepository.UpdateLevelAsync(id, skill);
+        var updatedSkill = await _skillRepository.UpdateSkillWithLevelAsync(id, skill);
         return updatedSkill?.ToDto();
     }
 }
