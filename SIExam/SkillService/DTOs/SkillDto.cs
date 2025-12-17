@@ -1,6 +1,6 @@
-namespace SkillService.Models;
+namespace SkillService.DTOs;
 
-public class Skill
+public class SkillDto
 {
     public int Id { get; set; }
     public int StatusId { get; set; }

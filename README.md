@@ -7,13 +7,13 @@ Projektet indeholder:
 * Kommunikation via HTTP/REST mellem services.
 * Brug af Swagger til HTTP for simpel API Dokumentation for Skill, Task og Title.
 * Resiliens Patterns: Timeout, Retry, Circuit Breaker.
-* Containeriseing med Docker vha. docker-compose.
+* Containeriseing med Docker vha. docker-compose som bruger dockers interne netværk(siexam_default) til at tillade mikroservices at kommunikere.
 
 Projektet er skrevet i C# med EntityFramework.
 
 ## Arkitektur
 Alle services kører i hver sin container via docker. 
-Alle services are medlemmer af docker netværket: PlayerCommunication.
+Alle services are medlemmer af docker netværket: siexam_default.
 
 ### SkillService
 **Formål:**

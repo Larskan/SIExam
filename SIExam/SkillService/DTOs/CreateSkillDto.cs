@@ -1,8 +1,7 @@
-namespace SkillService.Models;
+namespace SkillService.DTOs;
 
-public class Skill
+public class CreateSkillDto
 {
-    public int Id { get; set; }
     public int StatusId { get; set; }
     public string Name { get; set; } = string.Empty;
     public string Mastery { get; set; } = string.Empty;
