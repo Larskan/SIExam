@@ -32,15 +32,21 @@ SIEXAM/SIExam/SkillService/Controllers/SkillController.cs
 Står for en spillers daglige, ugentlige, måndedlige og årlige tasks.
 
 **Vigtigste Filer:**
+SIEXAM/SIExam/TaskService/Program.cs
+* Indeholder Resiliens.
 
 ### TitleService
 **Formål:**
 Står for en spillers titler.
 
 **Vigtigste Filer:**
+SIEXAM/SIExam/TitleService/Program.cs
+* Indeholder Resiliens.
 
 ### StatusService
 **Formål:**
 Står for at vise alle informationerne spilleren har adgang til.
 
 **Vigtigste Filer:**
+SIEXAM/SIExam/StatusService/Program.cs
+* Indeholder Resiliens.
