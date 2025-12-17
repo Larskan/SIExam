@@ -15,14 +15,10 @@ public class StatusRepository : IStatusRepository
     }
 
     public async Task<Status?> GetStatusByIdAsync(int id)
-    {
-        return await _context.Statuses.FindAsync(id);
-    }
+        => await _context.Statuses.FindAsync(id);
 
     public async Task<IEnumerable<Status>> GetAllStatusesAsync()
-    {
-        return await _context.Statuses.ToListAsync();
-    }
+        => await _context.Statuses.ToListAsync();
 
     public async Task<Status> CreateStatusAsync(Status status)
     {

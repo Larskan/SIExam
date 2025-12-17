@@ -1,9 +1,46 @@
-Use e.g. Polly to implement ressilience in a microservices system. 
-Discuss the different ressilience patterns and how they are implemented. 
-Discuss the pros and cons of the patterns and argue for the particular choice of patterns used in the system. 
-Examples of ressilience patterns: Circuit Breaker, Retry, Timeout, Bulkhead, and Fallback.
+# System Integration - Real Life Game Microservice(Status, Skill, Task, Title).
+Dette project er en simpel og faglig fokuseret microservice arkitektur, med fokus på Resiliens Patterns.
 
-StatusService: Contains the Players status, their experience, their level, their access to Skills, their access to Titles, their access to Tasks, their stats
-TaskService: Handles creation of Tasks, Marking tasks as done, registering XP for completed tasks, deleting tasks, creating projects with specific tasks.
-TitleService: Handles creation of titles, listing titles as tiers(1-10) depending on how well they are achieved, registers XP for title tiers, registers stats as reward for new tiers.
-SkillService: Handles creation of skills, mastery of skills(Basic, Intermediate, Advanced, Musou), registers XP based on level ups, registers stats based on skill mastery
+Projektet indeholder:
+* Opdeling i selvstændige services(Skill, Task og Title).
+* En aggregaret service som kaldes af alle andre services(Status).
+* Kommunikation via HTTP/REST mellem services.
+* Brug af Swagger til HTTP for simpel API Dokumentation for Skill, Task og Title.
+* Resiliens Patterns: Timeout, Retry, Circuit Breaker.
+* Containeriseing med Docker vha. docker-compose.
+
+Projektet er skrevet i C# med EntityFramework.
+
+## Arkitektur
+Alle services kører i hver sin container via docker. 
+Alle services are medlemmer af docker netværket: PlayerCommunication.
+
+### SkillService
+**Formål:**
+Står for en spillers skills.
+
+**Vigtigste Filer:**
+SIEXAM/SIExam/SkillService/Program.cs
+* Indeholder Resiliens.
+SIEXAM/SIExam/SkillService/Controllers/SkillController.cs
+* GET All skills
+* POST Create skill
+* PUT Update skill
+
+### TaskService
+**Formål:**
+Står for en spillers daglige, ugentlige, måndedlige og årlige tasks.
+
+**Vigtigste Filer:**
+
+### TitleService
+**Formål:**
+Står for en spillers titler.
+
+**Vigtigste Filer:**
+
+### StatusService
+**Formål:**
+Står for at vise alle informationerne spilleren har adgang til.
+
+**Vigtigste Filer:**
