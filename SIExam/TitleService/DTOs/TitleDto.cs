@@ -1,14 +1,14 @@
-namespace TitleService.Models;
+namespace TitleService.DTOs;
 
-public class Titles
+public class TitleDto
 {
     public int Id { get; set; }
     public int StatusId { get; set; }
-    public string Title { get; set; } = string.Empty;
+    public string Title { get; set; } = null!;
     public int Tier { get; set; }
     public string? Requirements { get; set; }
-    public string Description { get; set; } = string.Empty;
-    public string TierAdvancementRequirements { get; set; } = string.Empty;
+    public string Description { get; set; } = null!;
+    public string TierAdvancementRequirements { get; set; } = null!;
     public int VitalityGain { get; set; }
     public int EnduranceGain { get; set; }
     public int StrengthGain { get; set; }
