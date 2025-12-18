@@ -1,5 +1,6 @@
 # System Integration - Real Life Game Microservice(Status, Skill, Task, Title).
-Dette project er en simpel og faglig fokuseret microservice arkitektur, med fokus på Resiliens Patterns.
+Dette project er en simpel og faglig fokuseret microservice arkitektur, med fokus på Resiliensmønstre.
+Den er ment som version 1.0 af et større projekt. Denne version er mest fokuseret omkring Resiliensmønstre.
 
 Projektet indeholder:
 * Opdeling i selvstændige services(Skill, Task og Title).
