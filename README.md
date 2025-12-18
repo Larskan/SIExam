@@ -21,6 +21,9 @@ Alle services are medlemmer af docker netværket: siexam_default.
 **Formål:**
 Står for en spillers skills.
 
+**Link to swagger:**
+http://localhost:5001/swagger/index.html
+
 **Vigtigste Filer:**
 SIEXAM/SIExam/SkillService/Controllers/SkillController.cs
 * GET All skills
@@ -31,6 +34,9 @@ SIEXAM/SIExam/SkillService/Controllers/SkillController.cs
 ### TaskService
 **Formål:**
 Står for en spillers daglige, ugentlige, måndedlige og årlige tasks.
+
+**Link to swagger:**
+http://localhost:5002/swagger/index.html
 
 **Vigtigste Filer:**
 SIEXAM/SIExam/TaskService/Controllers/TaskController.cs
@@ -44,6 +50,9 @@ SIEXAM/SIExam/TaskService/Controllers/TaskController.cs
 **Formål:**
 Står for en spillers titler.
 
+**Link to swagger:**
+http://localhost:5003/swagger/index.html
+
 **Vigtigste Filer:**
 SIEXAM/SIExam/TitleService/Controllers/TitleController.cs
 * GET all titles
@@ -56,6 +65,9 @@ SIEXAM/SIExam/TitleService/Controllers/TitleController.cs
 ### StatusService
 **Formål:**
 Står for at vise alle informationerne spilleren har adgang til.
+
+**Link to swagger:**
+http://localhost:5004/swagger/index.html
 
 **Vigtigste Filer:**
 SIEXAM/SIExam/StatusService/Program.cs

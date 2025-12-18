@@ -3,6 +3,8 @@ using TitleService.Data;
 using TitleService.Interfaces;
 using TitleService.Models;
 
+namespace TitleService.Repositories;
+
 
 public class TitleRepository : ITitleRepository
 {
