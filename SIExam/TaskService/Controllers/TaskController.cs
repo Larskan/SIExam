@@ -31,8 +31,8 @@ public class TaskController : ControllerBase
         return CreatedAtAction(nameof(GetAllTasks), new { id = createdTask.Id }, createdTask);
     }
 
-    // PUT: api/Task/{id}/description
-    [HttpPut("{id}/description")]
+    // PATCH: api/Task/{id}/description
+    [HttpPatch("{id}/description")]
     public async Task<ActionResult<TaskDto?>> UpdateTaskDescription(int id, [FromBody] UpdateTaskDescriptionDto dto)
     {
         var updatedTask = await _taskService.UpdateTaskDescriptionAsync(id, dto);
@@ -41,8 +41,8 @@ public class TaskController : ControllerBase
         return Ok(updatedTask);
     }
 
-    // PUT: api/Task/{id}/experience
-    [HttpPut("{id}/experience")]
+    // PATCH: api/Task/{id}/experience
+    [HttpPatch("{id}/experience")]
     public async Task<ActionResult<TaskDto?>> UpdateTaskExperience(int id, [FromBody] UpdateTaskXpDto dto)
     {
         var updatedTask = await _taskService.UpdateTaskXPAsync(id, dto);
@@ -51,8 +51,8 @@ public class TaskController : ControllerBase
         return Ok(updatedTask);
     }
 
-    // PUT: api/Task/{id}/gains
-    [HttpPut("{id}/gains")]
+    // PATCH: api/Task/{id}/gains
+    [HttpPatch("{id}/gains")]
     public async Task<ActionResult<TaskDto?>> UpdateTaskGains(int id, [FromBody] UpdateTaskGainsDto dto)
     {
         var updatedTask = await _taskService.UpdateTaskGainsAsync(id, dto);

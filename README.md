@@ -24,19 +24,33 @@ Står for en spillers skills.
 SIEXAM/SIExam/SkillService/Controllers/SkillController.cs
 * GET All skills
 * POST Create skill
-* PUT Update skill
+* PATCH Update skill level
+* PATCH Update skill mastery
 
 ### TaskService
 **Formål:**
 Står for en spillers daglige, ugentlige, måndedlige og årlige tasks.
 
 **Vigtigste Filer:**
+SIEXAM/SIExam/TaskService/Controllers/TaskController.cs
+* GET all tasks
+* POST Create task
+* PATCH Update task description
+* PATCH Update task experience
+* PATCH Update task gains
 
 ### TitleService
 **Formål:**
 Står for en spillers titler.
 
 **Vigtigste Filer:**
+SIEXAM/SIExam/TitleService/Controllers/TitleController.cs
+* GET all titles
+* POST Create title
+* PATCH Update title name
+* PATCH Update title description
+* PATCH Update title gains
+* PATCH Update title tier
 
 ### StatusService
 **Formål:**
@@ -44,4 +58,4 @@ Står for at vise alle informationerne spilleren har adgang til.
 
 **Vigtigste Filer:**
 SIEXAM/SIExam/StatusService/Program.cs
-* Indeholder Resiliens.
+* Indeholder Resiliens for alle services den er afhængig af.

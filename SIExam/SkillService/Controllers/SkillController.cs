@@ -35,8 +35,8 @@ public class SkillController : ControllerBase
         return CreatedAtAction(nameof(GetAllSkills), new { id = createdSkill.Id }, createdSkill);
     }
 
-    // PUT: api/Skill/{id}/level
-    [HttpPut("{id}/level")]
+    // PATCH: api/Skill/{id}/level
+    [HttpPatch("{id}/level")]
     public async Task<ActionResult<SkillDto?>> UpdateSkillLevel(int id, [FromBody] UpdateSkillLevelDto dto)
     {
         var updatedSkill = await _skillService.UpdateSkillWithLevelAsync(id, dto);
@@ -45,8 +45,8 @@ public class SkillController : ControllerBase
         return Ok(updatedSkill);
     }
 
-    // PUT: api/Skill/{id}/mastery
-    [HttpPut("{id}/mastery")]
+    // PATCH: api/Skill/{id}/mastery
+    [HttpPatch("{id}/mastery")]
     public async Task<ActionResult<SkillDto?>> UpdateSkillMastery(int id, [FromBody] UpdateSkillMasteryDto dto)
     {
         var updatedSkill = await _skillService.UpdateSkillWithMasteryAsync(id, dto);
