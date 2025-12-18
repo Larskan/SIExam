@@ -21,8 +21,6 @@ Alle services are medlemmer af docker netværket: siexam_default.
 Står for en spillers skills.
 
 **Vigtigste Filer:**
-SIEXAM/SIExam/SkillService/Program.cs
-* Indeholder Resiliens.
 SIEXAM/SIExam/SkillService/Controllers/SkillController.cs
 * GET All skills
 * POST Create skill
@@ -33,16 +31,12 @@ SIEXAM/SIExam/SkillService/Controllers/SkillController.cs
 Står for en spillers daglige, ugentlige, måndedlige og årlige tasks.
 
 **Vigtigste Filer:**
-SIEXAM/SIExam/TaskService/Program.cs
-* Indeholder Resiliens.
 
 ### TitleService
 **Formål:**
 Står for en spillers titler.
 
 **Vigtigste Filer:**
-SIEXAM/SIExam/TitleService/Program.cs
-* Indeholder Resiliens.
 
 ### StatusService
 **Formål:**
