@@ -8,5 +8,10 @@ namespace StatusService.Interfaces
         Task<Status> CreateStatusAsync(Status status);
         Task RegisterExperienceAsync(int statusId, int xpGained);
         Task RegisterStatsAsync(int statusId, int vitality, int endurance, int strength, int intelligence, int mentality, int dexterity);
+
+        // For resilience testing
+        Task<string> CallSkillServiceSlowEndpointAsync();
+        Task<string> CallSkillServiceUnreliableEndpointAsync();
+        Task<string> CallSkillServiceUnstableEndpointAsync();
     }
 }

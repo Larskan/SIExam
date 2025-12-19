@@ -1,3 +1,4 @@
+using Polly.Timeout;
 using StatusService.Interfaces;
 using StatusService.Models;
 
@@ -6,10 +7,64 @@ namespace StatusService.Services;
 public class StatusService : IStatusService
 {
     private readonly IStatusRepository _statusRepository;
+    private readonly HttpClient _skillClient;
+    private readonly ILogger<StatusService> _logger = LoggerFactory.Create(builder => builder.AddConsole()).CreateLogger<StatusService>();
 
-    public StatusService(IStatusRepository statusRepository)
+    public StatusService(IStatusRepository statusRepository, IHttpClientFactory httpClientFactory)
     {
         _statusRepository = statusRepository;
+        _skillClient = httpClientFactory.CreateClient("SkillService");
+    }
+
+    // For resilience testing
+    public async Task<string> CallSkillServiceSlowEndpointAsync()
+    {
+        try
+        {
+            var response = await _skillClient.GetAsync("/api/Skill/slow");
+            response.EnsureSuccessStatusCode();
+            return await response.Content.ReadAsStringAsync();
+        }
+        catch (TimeoutRejectedException ex)
+        {
+            _logger.LogWarning(ex, "SkillService call timed out.");
+            return "SkillService request timed out.";
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "An error occurred while calling SkillService.");
+            return "An error occurred while calling SkillService.";
+        }
+    }
+
+    public async Task<string> CallSkillServiceUnreliableEndpointAsync()
+    {
+        try
+        {
+            var response = await _skillClient.GetAsync("/api/Skill/unreliable");
+            response.EnsureSuccessStatusCode();
+            return await response.Content.ReadAsStringAsync();
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "An error occurred while calling SkillService.");
+            return "An error occurred while calling SkillService.";
+        }
+    }
+
+    public async Task<string> CallSkillServiceUnstableEndpointAsync()
+    {
+        try
+        {
+            var response = await _skillClient.GetAsync("/api/Skill/unstable");
+            response.EnsureSuccessStatusCode();
+            return await response.Content.ReadAsStringAsync();
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "An error occurred while calling SkillService.");
+            return "An error occurred while calling SkillService.";
+        }
     }
 
     public async Task<Status?> GetStatusByIdAsync(int id)

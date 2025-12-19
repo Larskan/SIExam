@@ -1,7 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Polly;
 using StatusService.Interfaces;
-using StatusService.Models;
 using StatusService.Repositories;
 using StatusService.Resilience;
 
@@ -13,27 +12,43 @@ builder.Services.AddHttpClient("SkillService", client =>
 {
     client.BaseAddress = new Uri("http://skillservice:8080");
 })
-.AddPolicyHandler(PollyPolicies.TimeoutPolicy)
-.AddPolicyHandler(PollyPolicies.RetryPolicy)
-.AddPolicyHandler(PollyPolicies.CircuitBreakerPolicy);
+.AddPolicyHandler((sp, request) =>
+{
+    var logger = sp.GetRequiredService<ILogger<Program>>();
+    var timeout = PollyPolicies.TimeoutPolicy(logger);
+    var retry = PollyPolicies.RetryPolicy(logger);
+    var circuitBreaker = PollyPolicies.CircuitBreakerPolicy(logger);
+    return Policy.WrapAsync(circuitBreaker, retry, timeout);
+});
 
 // Resilience for TaskService
 builder.Services.AddHttpClient("TaskService", client =>
 {
     client.BaseAddress = new Uri("http://taskservice:8080");
 })
-.AddPolicyHandler(PollyPolicies.TimeoutPolicy)
-.AddPolicyHandler(PollyPolicies.RetryPolicy)
-.AddPolicyHandler(PollyPolicies.CircuitBreakerPolicy);
+.AddPolicyHandler((sp, request) =>
+{
+    var logger = sp.GetRequiredService<ILogger<Program>>();
+    var timeout = PollyPolicies.TimeoutPolicy(logger);
+    var retry = PollyPolicies.RetryPolicy(logger);
+    var circuitBreaker = PollyPolicies.CircuitBreakerPolicy(logger);
+    return Policy.WrapAsync(circuitBreaker, retry, timeout);
+});
 
 // Resilience for TitleService
 builder.Services.AddHttpClient("TitleService", client =>
 {
     client.BaseAddress = new Uri("http://titleservice:8080");
 })
-.AddPolicyHandler(PollyPolicies.TimeoutPolicy)
-.AddPolicyHandler(PollyPolicies.RetryPolicy)
-.AddPolicyHandler(PollyPolicies.CircuitBreakerPolicy);
+.AddPolicyHandler((sp, request) =>
+{
+    var logger = sp.GetRequiredService<ILogger<Program>>();
+    var timeout = PollyPolicies.TimeoutPolicy(logger);
+    var retry = PollyPolicies.RetryPolicy(logger);
+    var circuitBreaker = PollyPolicies.CircuitBreakerPolicy(logger);
+    return Policy.WrapAsync(circuitBreaker, retry, timeout);
+});
+
 
 
 
@@ -46,6 +61,10 @@ builder.Services.AddScoped<IStatusService, StatusService.Services.StatusService>
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Logging.ClearProviders();
+builder.Logging.AddConsole();
+builder.Logging.SetMinimumLevel(LogLevel.Information);
 
 var app = builder.Build();
 

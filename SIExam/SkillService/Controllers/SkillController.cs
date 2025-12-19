@@ -16,6 +16,33 @@ public class SkillController : ControllerBase
         _skillService = skillService;
     }
 
+    // Testing Resilience for timeout
+    [HttpGet("slow")]
+    public async Task<ActionResult<string>> GetSlowResponse()
+    {
+        await Task.Delay(10000); // 10sec
+        return Ok("This is a slow response from SkillService.");
+    }
+
+    // Testing resilience for retry and circuit breaker
+    [HttpGet("unreliable")]
+    public async Task<ActionResult<string>> GetUnreliableResponse()
+    {
+        // Simulate an unstable response
+        var random = new Random();
+        if (random.Next(1, 4) != 1) // 75% chance of failure
+            return StatusCode(500, "Internal Server Error");
+
+        return Ok("This is an unstable response from SkillService.");
+    }
+
+    // Testing resilience for retry and circuit breaker
+    [HttpGet("unstable")]
+    public async Task<ActionResult<string>> GetUnstable()
+    {
+        throw new HttpRequestException("Simulated transient error.");
+    }
+
     // GET: api/Skill
     [HttpGet]
     public async Task<ActionResult<IEnumerable<SkillDto>?>> GetAllSkills()

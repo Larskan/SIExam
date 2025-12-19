@@ -15,6 +15,28 @@ public class StatusController : ControllerBase
         _statusService = statusService;
     }
 
+    // GET: Resilience testing
+    [HttpGet("test/skillservice/slow")]
+    public async Task<ActionResult<string>> TestSkillServiceSlowEndpoint()
+    {
+        var response = await _statusService.CallSkillServiceSlowEndpointAsync();
+        return Ok(response);
+    }
+
+    [HttpGet("test/skillservice/unreliable")]
+    public async Task<ActionResult<string>> TestSkillServiceUnreliableEndpoint()
+    {
+        var response = await _statusService.CallSkillServiceUnreliableEndpointAsync();
+        return Ok(response);
+    }
+
+    [HttpGet("test/skillservice/unstable")]
+    public async Task<ActionResult<string>> TestSkillServiceUnstableEndpoint()
+    {
+        var response = await _statusService.CallSkillServiceUnstableEndpointAsync();
+        return Ok(response);
+    }
+
     [HttpGet("{id}")]
     public async Task<ActionResult<Status?>> GetStatusById(int id)
     {
