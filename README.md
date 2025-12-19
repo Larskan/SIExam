@@ -10,12 +10,13 @@ Projektet indeholder:
 * Resiliens Patterns: Timeout, Retry, Circuit Breaker.
 * Containeriseing med Docker vha. docker-compose som bruger dockers interne netværk(siexam_default) til at tillade mikroservices at kommunikere.
 * Brug af Data Transfer Objects(DTOs).
+* Test metoder i controllers til at teste resiliensmønstrene.
 
-Projektet er skrevet i C# med EntityFramework.
+Projektet er skrevet i C# med EntityFramework og Docker.
 
 ## Arkitektur
 Alle services kører i hver sin container via docker. 
-Alle services are medlemmer af docker netværket: siexam_default.
+Alle services er medlemmer af docker netværket: siexam_default.
 
 ### SkillService
 **Formål:**
@@ -26,6 +27,9 @@ http://localhost:5001/swagger/index.html
 
 **Vigtigste Filer:**
 SIEXAM/SIExam/SkillService/Controllers/SkillController.cs
+* GET slow til test af Timeout
+* GET unstable til test af Retry og Circuit Breaker
+* GET unreliable til alternativ test af Retry og Circuit Breaker
 * GET All skills
 * POST Create skill
 * PATCH Update skill level
@@ -72,3 +76,15 @@ http://localhost:5004/swagger/index.html
 **Vigtigste Filer:**
 SIEXAM/SIExam/StatusService/Program.cs
 * Indeholder Resiliens for alle services den er afhængig af.
+
+SIEXAM/SIExam/StatusService/Resilience/PollyPolicies.cs
+* Resiliensmønstrene.
+
+SIEXAM/SIExam/StatusService/Controllers/StatusController.cs
+* GET slow til test af Timeout
+* GET unstable til test af Retry og Circuit Breaker
+* GET unreliable til alternativ test af Retry og Circuit Breaker
+* GET status via ID
+* POST Create status
+* POST RegisterExperience
+* POST RegisterStats
