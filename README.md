@@ -26,6 +26,7 @@ Står for en spillers skills.
 http://localhost:5001/swagger/index.html
 
 **Vigtigste Filer:**
+
 SIEXAM/SIExam/SkillService/Controllers/SkillController.cs
 * GET slow til test af Timeout
 * GET unstable til test af Retry og Circuit Breaker
@@ -43,6 +44,7 @@ Står for en spillers daglige, ugentlige, måndedlige og årlige tasks.
 http://localhost:5002/swagger/index.html
 
 **Vigtigste Filer:**
+
 SIEXAM/SIExam/TaskService/Controllers/TaskController.cs
 * GET all tasks
 * POST Create task
@@ -58,6 +60,7 @@ Står for en spillers titler.
 http://localhost:5003/swagger/index.html
 
 **Vigtigste Filer:**
+
 SIEXAM/SIExam/TitleService/Controllers/TitleController.cs
 * GET all titles
 * POST Create title
@@ -74,6 +77,7 @@ Står for at vise alle informationerne spilleren har adgang til.
 http://localhost:5004/swagger/index.html
 
 **Vigtigste Filer:**
+
 SIEXAM/SIExam/StatusService/Program.cs
 * Indeholder Resiliens for alle services den er afhængig af.
 
